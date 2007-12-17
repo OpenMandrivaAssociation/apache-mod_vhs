@@ -22,7 +22,6 @@ BuildRequires:	apache-devel >= 2.2.0
 BuildRequires:	file
 BuildRequires:	libhome-devel
 BuildRequires:	php-devel
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 mod_vhs is an Apache 2.0/2.1 Web server module allowing mass virtual hosting
