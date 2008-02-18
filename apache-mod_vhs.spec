@@ -3,7 +3,7 @@
 %define mod_conf A73_%{mod_name}.conf
 %define mod_so %{mod_name}.so
 
-Summary:	Mod_vhs is a DSO module for the apache web server
+Summary:	DSO module for the apache web server
 Name:		apache-%{mod_name}
 Version:	1.0.32
 Release:	%mkrel 3
