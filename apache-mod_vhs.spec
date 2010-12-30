@@ -6,7 +6,7 @@
 Summary:	DSO module for the apache web server
 Name:		apache-%{mod_name}
 Version:	1.0.32
-Release:	%mkrel 14
+Release:	%mkrel 16
 Group:		System/Servers
 License:	GPL
 URL:		http://www.oav.net/projects/mod_vhs/
