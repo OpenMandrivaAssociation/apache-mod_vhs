@@ -6,7 +6,7 @@
 Summary:	DSO module for the apache web server
 Name:		apache-%{mod_name}
 Version:	1.0.32
-Release:	%mkrel 20
+Release:	20
 Group:		System/Servers
 License:	GPL
 URL:		http://www.oav.net/projects/mod_vhs/
@@ -22,7 +22,6 @@ BuildRequires:	apache-devel >= 2.2.0
 BuildRequires:	file
 BuildRequires:	libhome-devel
 BuildRequires:	php-devel
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 mod_vhs is an Apache 2.0/2.1 Web server module allowing mass virtual hosting
@@ -45,10 +44,9 @@ find . -type f|xargs file|grep 'text'|cut -d: -f1|xargs perl -p -i -e 's/\r//'
 chmod 644 *
 
 %build
-%{_sbindir}/apxs -DDEBIAN `apr-1-config --includes` `libhome.sh --includes` `php-config --includes` -lhome -DHAVE_MOD_PHP_SUPPORT -c %{mod_name}.c
+%{_bindir}/apxs -DDEBIAN `apr-1-config --includes` `libhome.sh --includes` `php-config --includes` -lhome -DHAVE_MOD_PHP_SUPPORT -c %{mod_name}.c
 
 %install
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
 
 install -d %{buildroot}%{_sysconfdir}/httpd/modules.d
 install -d %{buildroot}%{_libdir}/apache-extramodules
@@ -69,12 +67,96 @@ if [ "$1" = "0" ]; then
 fi
 
 %clean
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
 
 %files
-%defattr(-,root,root)
 %doc AUTHORS ChangeLog README* THANKS TODO WARNING
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/httpd/modules.d/%{mod_conf}
 %attr(0755,root,root) %{_libdir}/apache-extramodules/%{mod_so}
 
+
+
+
+%changelog
+* Wed May 25 2011 Funda Wang <fwang@mandriva.org> 1.0.32-20mdv2011.0
++ Revision: 678952
+- bump rel
+
+* Wed May 25 2011 Oden Eriksson <oeriksson@mandriva.com> 1.0.32-19
++ Revision: 678928
+- rebuild
+- mass rebuild
+
+* Sat Jan 01 2011 Oden Eriksson <oeriksson@mandriva.com> 1.0.32-17mdv2011.0
++ Revision: 627212
+- rebuilt against mysql-5.5.8 libs, again
+- rebuilt against mysql-5.5.8 libs
+
+* Sun Oct 24 2010 Oden Eriksson <oeriksson@mandriva.com> 1.0.32-14mdv2011.0
++ Revision: 588085
+- rebuild
+
+* Wed Apr 21 2010 Funda Wang <fwang@mandriva.org> 1.0.32-13mdv2010.1
++ Revision: 537582
+- rebuild
+
+* Mon Mar 08 2010 Oden Eriksson <oeriksson@mandriva.com> 1.0.32-12mdv2010.1
++ Revision: 516246
+- rebuilt for apache-2.2.15
+
+* Thu Feb 18 2010 Oden Eriksson <oeriksson@mandriva.com> 1.0.32-11mdv2010.1
++ Revision: 507477
+- rebuild
+
+* Tue Jan 12 2010 Buchan Milne <bgmilne@mandriva.org> 1.0.32-10mdv2010.1
++ Revision: 490361
+- Rebuild for db-4.8
+
+* Sat Aug 01 2009 Oden Eriksson <oeriksson@mandriva.com> 1.0.32-9mdv2010.0
++ Revision: 406681
+- rebuild
+
+* Tue Jan 06 2009 Oden Eriksson <oeriksson@mandriva.com> 1.0.32-8mdv2009.1
++ Revision: 326272
+- rebuild
+
+* Mon Jul 14 2008 Oden Eriksson <oeriksson@mandriva.com> 1.0.32-7mdv2009.0
++ Revision: 235125
+- rebuild
+
+* Thu Jun 05 2008 Oden Eriksson <oeriksson@mandriva.com> 1.0.32-6mdv2009.0
++ Revision: 215669
+- fix rebuild
+
+* Sun Mar 09 2008 Oden Eriksson <oeriksson@mandriva.com> 1.0.32-5mdv2008.1
++ Revision: 182873
+- rebuild
+
+* Mon Feb 18 2008 Thierry Vignaud <tv@mandriva.org> 1.0.32-4mdv2008.1
++ Revision: 170760
+- rebuild
+- fix "foobar is blabla" summary (=> "blabla") so that it looks nice in rpmdrake
+- kill re-definition of %%buildroot on Pixel's request
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+* Sat Sep 08 2007 Oden Eriksson <oeriksson@mandriva.com> 1.0.32-3mdv2008.0
++ Revision: 82699
+- rebuild
+
+
+* Sat Mar 10 2007 Oden Eriksson <oeriksson@mandriva.com> 1.0.32-2mdv2007.1
++ Revision: 140774
+- rebuild
+
+* Wed Mar 07 2007 Oden Eriksson <oeriksson@mandriva.com> 1.0.32-1mdv2007.1
++ Revision: 134884
+- 1.0.32
+
+* Thu Nov 09 2006 Oden Eriksson <oeriksson@mandriva.com> 1.0.30-1mdv2007.0
++ Revision: 79549
+- Import apache-mod_vhs
+
+* Sat Jul 22 2006 Oden Eriksson <oeriksson@mandriva.com> 1.0.30-1mdv2007.0
+- initial Mandriva package
 
