@@ -9,7 +9,7 @@ Version:	1.0.32
 Release:	21
 Group:		System/Servers
 License:	GPL
-URL:		http://www.oav.net/projects/mod_vhs/
+URL:		https://www.oav.net/projects/mod_vhs/
 Source0:	http://www.oav.net/projects/mod_vhs/%{mod_name}-%{version}.tar.gz
 Source1:	%{mod_conf}
 Requires(pre): rpm-helper
